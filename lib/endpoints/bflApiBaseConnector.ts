@@ -12,7 +12,7 @@ class bflApiBaseConnector {
         this.version = version;
     }
 
-    public async post(endpoint:bflApiEndpointsType, data:any):Promise<any> {
+    public async post(endpoint:bflApiEndpointsType, data:any={}):Promise<any> {
         if (!AVAILABLE_API_ENDPOINTS.includes(endpoint)) {
             throw new Error("Invalid endpoint.");
         }
@@ -35,7 +35,7 @@ class bflApiBaseConnector {
         }
     }
 
-    public async get(endpoint:bflApiEndpointsType, params:bflApiRequestParamsType):Promise<any> {
+    public async get(endpoint:bflApiEndpointsType, params:bflApiRequestParamsType={}):Promise<any> {
         if (!AVAILABLE_API_ENDPOINTS.includes(endpoint)) {
             throw new Error("Invalid endpoint.");
         }
