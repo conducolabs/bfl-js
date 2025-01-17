@@ -18,14 +18,14 @@ yarn add @conducolabs/bfl-js // If you use Yarn.
 
 ## Initializing the connector
 
-```
+```js
 import Connector from "@conducolabs/bfl-js";
 
 const bflApi = new Connector({ apiKey: "Paste your API key here"});
 ```
 
 ## Example implementation with flux-pro
-```
+```js
 import Connector, { FluxPro1 } from "@conducolabs/bfl-js";
 
 const generateImage = async () => {
@@ -52,7 +52,9 @@ This call uses the default values for image generation. You can pass an object w
 
 #### Class initializer
 
-```const connector = new Connector(configuration);```
+```js
+const connector = new Connector(configuration);
+```
 
 **Values:**
 __configuration__ 
