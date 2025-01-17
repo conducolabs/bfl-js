@@ -1,0 +1,1 @@
+type bflModelType = "flux-pro-1.1"|"flux-pro"|"flux-dev"|"flux-pro-1.1-ultra"|"flux-pro-1.0-fill"|"flux-pro-1.0-canny"|"flux-pro-1.0-depth";

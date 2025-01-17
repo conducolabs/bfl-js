@@ -1,0 +1,1 @@
+type bflApiEndpointsType = "get_result"|"flux-pro-1.1"|"flux-pro"|"flux-dev"|"flux-pro-1.1-ultra"|"flux-pro-1.0-fill"|"flux-pro-1.0-canny"|"flux-pro-1.0-depth"|"finetune_details"|"finetune"|"flux-pro-finetuned"|"flux-pro-1.0-depth-finetuned"|"flux-pro-1.0-canny-finetuned"|"flux-pro-1.0-fill-finetuned"|"my_finetunes"|"delete_finetune"|"flux-pro-1.1-ultra-finetuned";

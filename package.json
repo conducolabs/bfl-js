@@ -1,0 +1,21 @@
+{
+  "name": "bfl-js",
+  "version": "1.0.0",
+  "description": "An API wrapper for the Black Forest Labs API.",
+  "main": "index.js",
+  "repository": "https://github.com/conducolabs/bfl-js.git",
+  "author": "Johannes Terhürne <johannes@condu.co>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.9"
+  },
+  "scripts": {
+    "test": "mocha",
+    "build": "tsc",
+    "dev": "tsc -w"
+  },
+  "devDependencies": {
+    "mocha": "^11.0.1",
+    "typescript": "^5.7.3"
+  }
+}
