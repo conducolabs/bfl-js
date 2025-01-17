@@ -50,9 +50,9 @@ This call uses the default values for image generation. You can pass an object w
 
 `import Connector from "@conducolabs/bfl-js";`
 
-### Class initializer
+#### Class initializer
 
-```new Connector(configuration)```
+```const connector = new Connector(configuration);```
 
 **Values:**
 __configuration__ 
@@ -68,7 +68,7 @@ Example:
  **Description**
  This class initializes the connector and is needed for all available.
 
- ### Class functions
+ #### Class functions
 
  ```await connector.getStatus(imageId);```
 
