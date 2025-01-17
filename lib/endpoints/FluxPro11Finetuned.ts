@@ -1,6 +1,6 @@
 import bflApiBaseConnector from "./bflApiBaseConnector";
 
-class FluxPro11 extends bflApiBaseConnector {
+class FluxPro11Finetuned extends bflApiBaseConnector {
     constructor(apiKey:string, region:string, version:string) {
         super(apiKey, region, version);
     }
@@ -8,19 +8,21 @@ class FluxPro11 extends bflApiBaseConnector {
     private defaultConfig = {
         width: 1024,
         height: 768,
+        finetune_strength: 1.1,
         prompt_upsampling: false,
         safety_tolerance: 2,
         output_format: "jpeg"
     }
 
-    public async generateImage(prompt:string, options:FluxPro11InputType):Promise<FluxPro11OutputType> {
+    public async generateImage(prompt:string, finetuneId:string, options:FluxPro11FinetunedInputType):Promise<FluxPro11FinetunedOutputType> {
         const data = {
             ...this.defaultConfig,
             ...options,
-            prompt
+            prompt,
+            finetune_id: finetuneId
         };
-        return await this.post("flux-pro-1.1", data);
+        return await this.post("flux-pro-finetuned", data);
     }
 }
 
-export default FluxPro11;
+export default FluxPro11Finetuned;

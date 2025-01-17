@@ -1,4 +1,5 @@
-type FluxPro11InputType = {
+type FluxPro11FinetunedInputType = {
+    finetune_strength?:number;
     image_prompt?:string;
     width?:number;
     height?:number;
