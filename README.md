@@ -89,7 +89,6 @@ Example: `f1d1f83d-1cf5-48f3-9c33-ff7e55d503fa`
       "prompt": "Realistic picture of Commander Con flying in space waving with one hand."
    },
    "progress": null
-
 }
  ```
 
