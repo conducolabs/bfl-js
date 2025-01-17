@@ -18,7 +18,6 @@ test("Generate image with flux-pro 1.1 with finetune model", async() => {
     const image = await fluxPro1Finetuned.generateImage("Realistic picture of Commander Con flying in space waving with one hand.", process.env.BFL_FINETUNE_MODEL_ID);
     expect(image.id).toBeDefined();
     imageId = image.id;
-    console.log(imageId);
 });
 
 test("Check image status", async() => {
@@ -31,5 +30,4 @@ test("Generate ultra realistic image with flux-pro 1.1 with finetune model", asy
     const image = await fluxPro1Finetuned.generateUltraImage("Realistic picture of Commander Con flying in space waving with one hand.", process.env.BFL_FINETUNE_MODEL_ID);
     expect(image.id).toBeDefined();
     imageId = image.id;
-    console.log(imageId);
 });
