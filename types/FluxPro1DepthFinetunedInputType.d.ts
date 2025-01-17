@@ -6,5 +6,5 @@ type FluxPro1DepthFinetunedInputType = {
     steps?:number;
     guidance?:number;
     safety_tolerance?:number;
-    output_format?: "jpeg"|"png";
+    output_format?:"jpeg"|"png";
 }
