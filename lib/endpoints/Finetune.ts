@@ -9,14 +9,14 @@ class Finetune extends bflApiBaseConnector {
         trigger_word: "TOK",
         mode: "general",
         iterations: 300,
-        learning_rate: 1,
+        learning_rate: 0.00001,
         captioning: true,
         priority: "quality",
         finetune_type: "full",
         lora_rank: 32
     }
 
-    public async create(archive:string, name:string, options:FinetuneCreateInputType):Promise<any> {
+    public async create(archive:string, name:string, options:FinetuneCreateInputType):Promise<FinetuneCreateOutputType> {
         const data = {
             ...this.defaultConfig,
             ...options,
@@ -26,11 +26,11 @@ class Finetune extends bflApiBaseConnector {
         return await this.post("finetune", data);
     }
 
-    public async getDetails(finetuneId:string):Promise<any> {
+    public async getDetails(finetuneId:string):Promise<FinetuneDetailsOutputType> {
         return await this.get("finetune_details", { finetune_id: finetuneId });
     }
 
-    public async getList():Promise<any> {
+    public async getList():Promise<FinetuneListOutputType> {
         return await this.get("my_finetunes");
     }
 

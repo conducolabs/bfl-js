@@ -29,16 +29,17 @@ class bflApiBaseConnector {
                 throw new Error("API key is required");
             }
             try {
-                const request = yield axios_1.default.post(`https://api.${this.region}.bfl.ai/${this.version}/${endpoint}`, {
-                    data,
+                const request = yield axios_1.default.post(`https://api.${this.region}.bfl.ai/${this.version}/${endpoint}`, data, {
                     headers: {
                         "X-Key": this.apiKey,
                         "Accept": "application/json",
+                        "Content-Type": "application/json"
                     }
                 });
                 return request.data;
             }
             catch (error) {
+                console.error(error.response.data);
                 throw new Error(error.message);
             }
         });
@@ -52,16 +53,18 @@ class bflApiBaseConnector {
                 throw new Error("API key is required");
             }
             try {
-                const request = yield axios_1.default.post(`https://api.${this.region}.bfl.ai/${this.version}/${endpoint}`, {
+                const request = yield axios_1.default.get(`https://api.${this.region}.bfl.ai/${this.version}/${endpoint}`, {
                     params,
                     headers: {
                         "X-Key": this.apiKey,
                         "Accept": "application/json",
+                        "Content-Type": "application/json"
                     }
                 });
                 return request.data;
             }
             catch (error) {
+                console.error(error.response.data);
                 throw new Error(error.message);
             }
         });

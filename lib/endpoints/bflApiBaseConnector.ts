@@ -22,15 +22,16 @@ class bflApiBaseConnector {
         }
 
         try {
-            const request = await axios.post(`https://api.${ this.region }.bfl.ai/${ this.version }/${ endpoint }`, {
-                data,
+            const request = await axios.post(`https://api.${ this.region }.bfl.ai/${ this.version }/${ endpoint }`, data, {
                 headers: {
                     "X-Key": this.apiKey,
                     "Accept": "application/json",
+                    "Content-Type": "application/json"
                 }
             });
             return request.data;
         } catch(error:any) {
+            console.error(error.response.data);
             throw new Error(error.message);
         }
     }
@@ -45,15 +46,17 @@ class bflApiBaseConnector {
         }
 
         try {
-            const request = await axios.post(`https://api.${ this.region }.bfl.ai/${ this.version }/${ endpoint }`, {
+            const request = await axios.get(`https://api.${ this.region }.bfl.ai/${ this.version }/${ endpoint }`, {
                 params,
                 headers: {
                     "X-Key": this.apiKey,
                     "Accept": "application/json",
+                    "Content-Type": "application/json"
                 }
             });
             return request.data;
         } catch(error:any) {
+            console.error(error.response.data);
             throw new Error(error.message);
         }
     }

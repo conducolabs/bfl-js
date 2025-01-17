@@ -20,7 +20,7 @@ class Finetune extends bflApiBaseConnector_1.default {
             trigger_word: "TOK",
             mode: "general",
             iterations: 300,
-            learning_rate: 1,
+            learning_rate: 0.00001,
             captioning: true,
             priority: "quality",
             finetune_type: "full",

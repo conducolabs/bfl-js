@@ -17,7 +17,7 @@ const GetResult_1 = __importDefault(require("./endpoints/GetResult"));
 class bflBase {
     constructor(configuration) {
         this.apiKey = "";
-        this.apiVersion = "v1";
+        this.version = "v1";
         this.region = "us1";
         if (configuration === null || configuration === undefined) {
             throw new Error("Configuration object is required");
@@ -26,16 +26,16 @@ class bflBase {
             throw new Error("API key is required");
         }
         this.apiKey = configuration.apiKey;
-        if (typeof configuration.apiVersion === "string" && config_1.AVAILABLE_API_VERSIONS.includes(configuration.apiVersion)) {
-            this.apiVersion = configuration.apiVersion;
+        if (typeof configuration.version === "string" && config_1.AVAILABLE_API_VERSIONS.includes(configuration.version)) {
+            this.version = configuration.version;
         }
-        if (typeof configuration.apiRegion === "string" && config_1.AVAILABLE_API_REGIONS.includes(configuration.apiRegion)) {
-            this.region = configuration.apiRegion;
+        if (typeof configuration.region === "string" && config_1.AVAILABLE_API_REGIONS.includes(configuration.region)) {
+            this.region = configuration.region;
         }
     }
     getStatus(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const connector = new GetResult_1.default(this.apiKey, this.region, this.apiVersion);
+            const connector = new GetResult_1.default(this.apiKey, this.region, this.version);
             return connector.getResult(id);
         });
     }

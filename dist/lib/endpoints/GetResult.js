@@ -19,7 +19,7 @@ class GetResult extends bflApiBaseConnector_1.default {
     }
     getResult(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.get("flux-dev", { id });
+            return yield this.get("get_result", { id });
         });
     }
 }

@@ -4,7 +4,7 @@ import GetResult from "./endpoints/GetResult";
 
 class bflBase {
     public apiKey:string = "";
-    public apiVersion:string = "v1";
+    public version:string = "v1";
     public region:string = "us1";
 
     constructor(configuration:bflBaseConfigurationType) {
@@ -19,17 +19,17 @@ class bflBase {
 
         this.apiKey = configuration.apiKey;
 
-        if (typeof configuration.apiVersion === "string" && AVAILABLE_API_VERSIONS.includes(configuration.apiVersion)) {
-            this.apiVersion = configuration.apiVersion;
+        if (typeof configuration.version === "string" && AVAILABLE_API_VERSIONS.includes(configuration.version)) {
+            this.version = configuration.version;
         }
 
-        if (typeof configuration.apiRegion === "string" && AVAILABLE_API_REGIONS.includes(configuration.apiRegion)) {
-            this.region = configuration.apiRegion;
+        if (typeof configuration.region === "string" && AVAILABLE_API_REGIONS.includes(configuration.region)) {
+            this.region = configuration.region;
         }
     }
 
     async getStatus(id:string):Promise<bflStatusType> {
-        const connector = new GetResult(this.apiKey, this.region, this.apiVersion);
+        const connector = new GetResult(this.apiKey, this.region, this.version);
         return connector.getResult(id);
     }
 

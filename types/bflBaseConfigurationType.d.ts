@@ -1,5 +1,5 @@
 type bflBaseConfigurationType = {
     apiKey: string;
-    apiVersion?: string;
-    apiRegion?: string;
+    version?: string;
+    region?: string;
 }

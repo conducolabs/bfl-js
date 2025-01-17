@@ -6,7 +6,7 @@ class GetResult extends bflApiBaseConnector {
     }
 
     public async getResult(id:string):Promise<bflStatusType> {
-        return await this.get("flux-dev", { id });
+        return await this.get("get_result", { id });
     }
 }
 

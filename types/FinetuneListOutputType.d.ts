@@ -1,0 +1,3 @@
+type FinetuneListOutputType = {
+    finetunes: string[];
+}
