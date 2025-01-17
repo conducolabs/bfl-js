@@ -1,9 +1,9 @@
-type FluxPro1CannyInputType = {
-    control_image:string;
-    preprocessed_image?:string;
+type FluxPro1FillFinetunedInputType = {
+    image:string;
+    finetune_strength?:number;
+    mask?:string;
+    prompt?:string;
     prompt_upsampling?:boolean;
-    canny_low_thrshold?:number;
-    canny_high_thrshold?:number;
     seed?:number;
     steps?:number;
     guidance?:number;
