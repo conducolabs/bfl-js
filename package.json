@@ -1,10 +1,14 @@
 {
-  "name": "bfl-js",
+  "name": "@conduclabs/bfl-js",
   "version": "1.0.0",
   "description": "An API wrapper for the Black Forest Labs API.",
   "main": "index.js",
   "repository": "https://github.com/conducolabs/bfl-js.git",
   "author": "Johannes Terhürne <johannes@condu.co>",
+  "bugs": {
+    "url": "https://github.com/conducolabs/bfl-js/issues"
+  },
+  "homepage": "https://condu.co",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.7.9"
