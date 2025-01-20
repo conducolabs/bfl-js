@@ -1,8 +1,9 @@
 {
   "name": "@conducolabs/bfl-js",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "An API wrapper for the Black Forest Labs API.",
-  "main": "index.js",
+  "main": "dist/lib/bfl-js.js",
+  "types": "dist/lib/bfl-js.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/conducolabs/bfl-js.git"
@@ -18,7 +19,7 @@
   },
   "scripts": {
     "test": "jest --setupFiles dotenv/config",
-    "build": "tsc",
+    "build": "tsc --declaration",
     "dev": "tsc -w"
   },
   "devDependencies": {

@@ -31,8 +31,7 @@ class bflApiBaseConnector {
             });
             return request.data;
         } catch(error:any) {
-            console.error(error.response.data);
-            throw new Error(error.message);
+            throw new Error(error);
         }
     }
 
@@ -56,8 +55,7 @@ class bflApiBaseConnector {
             });
             return request.data;
         } catch(error:any) {
-            console.error(error.response.data);
-            throw new Error(error.message);
+            throw new Error(error);
         }
     }
 }
