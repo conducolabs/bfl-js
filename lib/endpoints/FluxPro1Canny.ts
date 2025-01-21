@@ -16,13 +16,13 @@ class FluxPro1Canny extends bflApiBaseConnector {
         output_format: "jpeg"
     }
 
-    public async generateImage(prompt:string, options:FluxPro1CannyInputType):Promise<FluxPro1CannyOutputType> {
+    public async generateImage(prompt:string, options:FluxPro1CannyInputType, onDownloadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {}), onUploadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {})):Promise<FluxPro1CannyOutputType> {
         const data = {
             ...this.defaultConfig,
             ...options,
             prompt
         }
-        return await this.post("flux-pro-1.0-canny", data);
+        return await this.post("flux-pro-1.0-canny", data, onDownloadProgress, onUploadProgress);
     }
 }
 

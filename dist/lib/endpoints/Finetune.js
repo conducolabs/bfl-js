@@ -27,10 +27,10 @@ class Finetune extends bflApiBaseConnector_1.default {
             lora_rank: 32
         };
     }
-    create(archive, name, options) {
-        return __awaiter(this, void 0, void 0, function* () {
+    create(archive_1, name_1, options_1) {
+        return __awaiter(this, arguments, void 0, function* (archive, name, options, onDownloadProgress = ((progressEvent) => { }), onUploadProgress = ((progressEvent) => { })) {
             const data = Object.assign(Object.assign(Object.assign({}, this.defaultConfig), options), { file_data: archive, finetune_comment: name });
-            return yield this.post("finetune", data);
+            return yield this.post("finetune", data, onDownloadProgress, onUploadProgress);
         });
     }
     getDetails(finetuneId) {

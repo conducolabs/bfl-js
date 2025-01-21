@@ -15,13 +15,13 @@ class FluxPro1Depth extends bflApiBaseConnector {
         output_format: "jpeg"
     }
 
-    public async generateImage(prompt:string, options:FluxPro1DepthInputType):Promise<FluxPro1DepthOutputType> {
+    public async generateImage(prompt:string, options:FluxPro1DepthInputType, onDownloadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {}), onUploadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {})):Promise<FluxPro1DepthOutputType> {
         const data = {
             ...this.defaultConfig,
             ...options,
             prompt
         }
-        return await this.post("flux-pro-1.0-depth", data);
+        return await this.post("flux-pro-1.0-depth", data, onDownloadProgress, onUploadProgress);
     }
 }
 

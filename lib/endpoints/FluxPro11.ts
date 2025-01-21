@@ -13,13 +13,13 @@ class FluxPro11 extends bflApiBaseConnector {
         output_format: "jpeg"
     }
 
-    public async generateImage(prompt:string, options:FluxPro11InputType):Promise<FluxPro11OutputType> {
+    public async generateImage(prompt:string, options:FluxPro11InputType, onDownloadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {}), onUploadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {})):Promise<FluxPro11OutputType> {
         const data = {
             ...this.defaultConfig,
             ...options,
             prompt
         };
-        return await this.post("flux-pro-1.1", data);
+        return await this.post("flux-pro-1.1", data, onDownloadProgress, onUploadProgress);
     }
 }
 

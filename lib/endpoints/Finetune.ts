@@ -16,14 +16,14 @@ class Finetune extends bflApiBaseConnector {
         lora_rank: 32
     }
 
-    public async create(archive:string, name:string, options:FinetuneCreateInputType):Promise<FinetuneCreateOutputType> {
+    public async create(archive:string, name:string, options:FinetuneCreateInputType, onDownloadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {}), onUploadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {})):Promise<FinetuneCreateOutputType> {
         const data = {
             ...this.defaultConfig,
             ...options,
             file_data: archive,
             finetune_comment: name
         };
-        return await this.post("finetune", data);
+        return await this.post("finetune", data, onDownloadProgress, onUploadProgress);
     }
 
     public async getDetails(finetuneId:string):Promise<FinetuneDetailsOutputType> {

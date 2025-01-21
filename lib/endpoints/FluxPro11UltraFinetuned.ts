@@ -14,14 +14,14 @@ class FluxPro11UltraFinetuned extends bflApiBaseConnector {
         image_prompt_strength: 0.1
     }
 
-    public async generateImage(prompt:string, finetuneId:string, options:FluxPro11UltraFinetunedInputType):Promise<FluxPro11UltraFinetunedOutputType> {
+    public async generateImage(prompt:string, finetuneId:string, options:FluxPro11UltraFinetunedInputType, onDownloadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {}), onUploadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {})):Promise<FluxPro11UltraFinetunedOutputType> {
         const data = {
             ...this.defaultConfig,
             ...options,
             prompt,
             finetune_id: finetuneId
         }
-        return await this.post("flux-pro-1.1-ultra-finetuned", data);
+        return await this.post("flux-pro-1.1-ultra-finetuned", data, onDownloadProgress, onUploadProgress);
     }
 }
 

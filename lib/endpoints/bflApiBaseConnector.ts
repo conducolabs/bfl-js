@@ -12,7 +12,7 @@ class bflApiBaseConnector {
         this.version = version;
     }
 
-    public async post(endpoint:bflApiEndpointsType, data:any={}):Promise<any> {
+    public async post(endpoint:bflApiEndpointsType, data:any={}, onDownloadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {}), onUploadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {})):Promise<any> {
         if (!AVAILABLE_API_ENDPOINTS.includes(endpoint)) {
             throw new Error("Invalid endpoint.");
         }
@@ -27,6 +27,20 @@ class bflApiBaseConnector {
                     "X-Key": this.apiKey,
                     "Accept": "application/json",
                     "Content-Type": "application/json"
+                },
+                onDownloadProgress: (progressEvent:any) => {
+                    onDownloadProgress({
+                        total: progressEvent.total,
+                        loaded: progressEvent.loaded,
+                        percentage: progressEvent.loaded / progressEvent.total
+                    });
+                },
+                onUploadProgress: (progressEvent:any) => {
+                    onUploadProgress({
+                        total: progressEvent.total,
+                        loaded: progressEvent.loaded,
+                        percentage: progressEvent.loaded / progressEvent.total
+                    });
                 }
             });
             return request.data;
@@ -35,7 +49,7 @@ class bflApiBaseConnector {
         }
     }
 
-    public async get(endpoint:bflApiEndpointsType, params:bflApiRequestParamsType={}):Promise<any> {
+    public async get(endpoint:bflApiEndpointsType, params:bflApiRequestParamsType={}, onDownloadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {}), onUploadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {})):Promise<any> {
         if (!AVAILABLE_API_ENDPOINTS.includes(endpoint)) {
             throw new Error("Invalid endpoint.");
         }
@@ -51,6 +65,20 @@ class bflApiBaseConnector {
                     "X-Key": this.apiKey,
                     "Accept": "application/json",
                     "Content-Type": "application/json"
+                },
+                onDownloadProgress: (progressEvent:any) => {
+                    onDownloadProgress({
+                        total: progressEvent.total,
+                        loaded: progressEvent.loaded,
+                        percentage: progressEvent.loaded / progressEvent.total
+                    });
+                },
+                onUploadProgress: (progressEvent:any) => {
+                    onUploadProgress({
+                        total: progressEvent.total,
+                        loaded: progressEvent.loaded,
+                        percentage: progressEvent.loaded / progressEvent.total
+                    });
                 }
             });
             return request.data;

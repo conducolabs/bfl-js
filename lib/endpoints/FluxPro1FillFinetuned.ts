@@ -16,14 +16,14 @@ class FluxPro1FillFinetuned extends bflApiBaseConnector {
         output_format: "jpeg"
     }
 
-    public async generateImage(prompt:string, finetuneId:string, options:FluxPro1FillFinetunedInputType):Promise<FluxPro1FillFinetunedOutputType> {
+    public async generateImage(prompt:string, finetuneId:string, options:FluxPro1FillFinetunedInputType, onDownloadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {}), onUploadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {})):Promise<FluxPro1FillFinetunedOutputType> {
         const data = {
             ...this.defaultConfig,
             ...options,
             prompt,
             finetune_id: finetuneId
         }
-        return await this.post("flux-pro-1.0-fill-finetuned", data);
+        return await this.post("flux-pro-1.0-fill-finetuned", data, onDownloadProgress, onUploadProgress);
     }
 }
 

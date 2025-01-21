@@ -25,10 +25,10 @@ class FluxPro11UltraFinetuned extends bflApiBaseConnector_1.default {
             image_prompt_strength: 0.1
         };
     }
-    generateImage(prompt, finetuneId, options) {
-        return __awaiter(this, void 0, void 0, function* () {
+    generateImage(prompt_1, finetuneId_1, options_1) {
+        return __awaiter(this, arguments, void 0, function* (prompt, finetuneId, options, onDownloadProgress = ((progressEvent) => { }), onUploadProgress = ((progressEvent) => { })) {
             const data = Object.assign(Object.assign(Object.assign({}, this.defaultConfig), options), { prompt, finetune_id: finetuneId });
-            return yield this.post("flux-pro-1.1-ultra-finetuned", data);
+            return yield this.post("flux-pro-1.1-ultra-finetuned", data, onDownloadProgress, onUploadProgress);
         });
     }
 }

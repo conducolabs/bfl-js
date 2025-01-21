@@ -21,7 +21,7 @@ class bflApiBaseConnector {
         this.version = version;
     }
     post(endpoint_1) {
-        return __awaiter(this, arguments, void 0, function* (endpoint, data = {}) {
+        return __awaiter(this, arguments, void 0, function* (endpoint, data = {}, onDownloadProgress = ((progressEvent) => { }), onUploadProgress = ((progressEvent) => { })) {
             if (!config_1.AVAILABLE_API_ENDPOINTS.includes(endpoint)) {
                 throw new Error("Invalid endpoint.");
             }
@@ -34,6 +34,20 @@ class bflApiBaseConnector {
                         "X-Key": this.apiKey,
                         "Accept": "application/json",
                         "Content-Type": "application/json"
+                    },
+                    onDownloadProgress: (progressEvent) => {
+                        onDownloadProgress({
+                            total: progressEvent.total,
+                            loaded: progressEvent.loaded,
+                            percentage: progressEvent.loaded / progressEvent.total
+                        });
+                    },
+                    onUploadProgress: (progressEvent) => {
+                        onUploadProgress({
+                            total: progressEvent.total,
+                            loaded: progressEvent.loaded,
+                            percentage: progressEvent.loaded / progressEvent.total
+                        });
                     }
                 });
                 return request.data;
@@ -44,7 +58,7 @@ class bflApiBaseConnector {
         });
     }
     get(endpoint_1) {
-        return __awaiter(this, arguments, void 0, function* (endpoint, params = {}) {
+        return __awaiter(this, arguments, void 0, function* (endpoint, params = {}, onDownloadProgress = ((progressEvent) => { }), onUploadProgress = ((progressEvent) => { })) {
             if (!config_1.AVAILABLE_API_ENDPOINTS.includes(endpoint)) {
                 throw new Error("Invalid endpoint.");
             }
@@ -58,6 +72,20 @@ class bflApiBaseConnector {
                         "X-Key": this.apiKey,
                         "Accept": "application/json",
                         "Content-Type": "application/json"
+                    },
+                    onDownloadProgress: (progressEvent) => {
+                        onDownloadProgress({
+                            total: progressEvent.total,
+                            loaded: progressEvent.loaded,
+                            percentage: progressEvent.loaded / progressEvent.total
+                        });
+                    },
+                    onUploadProgress: (progressEvent) => {
+                        onUploadProgress({
+                            total: progressEvent.total,
+                            loaded: progressEvent.loaded,
+                            percentage: progressEvent.loaded / progressEvent.total
+                        });
                     }
                 });
                 return request.data;

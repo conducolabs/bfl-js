@@ -24,10 +24,10 @@ class FluxPro11Ultra extends bflApiBaseConnector_1.default {
             image_prompt_strength: 0.1
         };
     }
-    generateImage(prompt, options) {
-        return __awaiter(this, void 0, void 0, function* () {
+    generateImage(prompt_1, options_1) {
+        return __awaiter(this, arguments, void 0, function* (prompt, options, onDownloadProgress = ((progressEvent) => { }), onUploadProgress = ((progressEvent) => { })) {
             const data = Object.assign(Object.assign(Object.assign({}, this.defaultConfig), options), { prompt });
-            return yield this.post("flux-pro-1.1-ultra", data);
+            return yield this.post("flux-pro-1.1-ultra", data, onDownloadProgress, onUploadProgress);
         });
     }
 }

@@ -27,10 +27,10 @@ class FluxPro1 extends bflApiBaseConnector_1.default {
             output_format: "jpeg"
         };
     }
-    generateImage(prompt, options) {
-        return __awaiter(this, void 0, void 0, function* () {
+    generateImage(prompt_1, options_1) {
+        return __awaiter(this, arguments, void 0, function* (prompt, options, onDownloadProgress = ((progressEvent) => { }), onUploadProgress = ((progressEvent) => { })) {
             const data = Object.assign(Object.assign(Object.assign({}, this.defaultConfig), options), { prompt });
-            return yield this.post("flux-pro", data);
+            return yield this.post("flux-pro", data, onDownloadProgress, onUploadProgress);
         });
     }
 }

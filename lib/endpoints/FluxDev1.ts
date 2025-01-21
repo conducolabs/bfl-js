@@ -16,13 +16,13 @@ class FluxDev1 extends bflApiBaseConnector {
         output_format: "jpeg"
     }
 
-    public async generateImage(prompt:string, options:FluxDev1InputType):Promise<FluxDev1OutputType> {
+    public async generateImage(prompt:string, options:FluxDev1InputType, onDownloadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {}), onUploadProgress:(progressEvent:{ loaded: number, total: number; percentage: number }) => void=((progressEvent) => {})):Promise<FluxDev1OutputType> {
         const data = {
             ...this.defaultConfig,
             ...options,
             prompt
         }
-        return await this.post("flux-dev", data);
+        return await this.post("flux-dev", data, onDownloadProgress, onUploadProgress);
     }
 }
 
